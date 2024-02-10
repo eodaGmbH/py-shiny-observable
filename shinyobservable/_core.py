@@ -4,7 +4,7 @@ from os.path import join, relpath
 
 BASE_URL = "https://observablehq.com"
 BASE_API_URL = "https://api.observablehq.com"
-API_VERSION = 3
+API_VERSION = 4
 
 
 class Observable(object):
