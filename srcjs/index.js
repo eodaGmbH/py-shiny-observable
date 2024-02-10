@@ -1,5 +1,13 @@
 import { Runtime, Inspector } from "@observablehq/runtime";
 
+function createCellNode(el, name) {
+  const node = document.createElement("div");
+  node.id = `observable-${el.id}-${name}`;
+  console.log(node.id);
+  el.appendChild(node);
+  return node;
+}
+
 class ObservableOutputBinding extends Shiny.OutputBinding {
   find(scope) {
     return scope.find(".shiny-observable-output");
@@ -8,29 +16,31 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
   renderValue(el, payload) {
     console.log(payload);
     el.style.width = payload.width;
-    let main = (window.obsMain = "test");
     const nb = payload.notebook;
+
+    // Import nb
     import(nb).then((module) => {
-      // console.log(module);
       const define = module.default;
       const runtime = new Runtime();
+      let main;
+
       // Embed complete notebook
       if (payload.cells == null) {
         main = runtime.module(define, Inspector.into(el));
+
+        // Embed single cell
       } else {
-        // embed single cell
         main = runtime.module(define, (name) => {
           console.log("cell", name);
-          if (name === payload.cells[0]) {
+          if (payload.cells.includes(name)) {
             console.log("embed me");
-            return new Inspector(el);
+            // return new Inspector(el);
+            return new Inspector(createCellNode(el, name));
           }
-          // return 1;
         });
-        console.log("main here", main);
+        console.log("main", main);
       }
     });
-    console.log("main", main);
   }
 }
 

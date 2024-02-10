@@ -12,4 +12,4 @@ ui.hr()
 
 @ObservableRenderer
 def render_notebook():
-    return Observable(NOTEBOOK, cells=["chart"])
+    return Observable(NOTEBOOK, cells=["chart", "data"])
