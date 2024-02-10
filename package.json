@@ -1,0 +1,21 @@
+{
+  "name": "observable-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "esbuild srcjs/index.js --bundle --minify --outfile=shinyobservable/srcjs/observable-bindings.js",
+    "build-dev": "esbuild srcjs/index.js --bundle --outfile=shinyobservable/srcjs/observable-bindings.js",
+    "prettier": "prettier srcjs --write",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stefan Kuethe",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "prettier": "^3.2.5"
+  }
+}
