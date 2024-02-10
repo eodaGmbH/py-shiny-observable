@@ -17,5 +17,4 @@ def output_observable(id: str) -> Tag:
         # Use resolve_id so that our component will work in a module
         id=resolve_id(id),
         class_="shiny-observable-output",
-        # style="width: 600px;height:400px;",
     )

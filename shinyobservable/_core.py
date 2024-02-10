@@ -8,6 +8,8 @@ API_VERSION = 4
 
 
 class Observable(object):
+    """Observable"""
+
     def __init__(self, notebook, width: int | str = None):
         if isinstance(width, int):
             width = f"{width}px"
