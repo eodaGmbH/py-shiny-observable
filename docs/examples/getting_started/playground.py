@@ -2,8 +2,9 @@ import random
 import string
 
 from htmltools import a
-from shiny.express import ui
-from shinyobservable import Observable, ObservableRenderer
+from shiny import reactive
+from shiny.express import input, ui
+from shinyobservable import Observable, ObservableContext, ObservableRenderer
 
 NOTEBOOK = "https://observablehq.com/@d3/zoomable-sunburst"
 # NOTEBOOK = "https://observablehq.com/d/31ab0068a4664578"
@@ -32,3 +33,15 @@ def render_notebook():
         #    dict(letter="C", frequency=0.6),
         # ],
     )
+
+
+with ui.div(style="padding-top: 10px;"):
+    ui.input_action_button("update_data", "Update data")
+
+
+@reactive.Effect
+@reactive.event(input.update_data)
+async def update_data():
+    print(input.update_data())
+    async with ObservableContext("render_notebook") as nb:
+        nb.redefine(data=create_data())

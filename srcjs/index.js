@@ -8,6 +8,22 @@ function createCellNode(el, name) {
   return node;
 }
 
+function redefineCells(main, payload) {
+  for (const [key, value] of Object.entries(payload.data)) {
+    console.log(key, value);
+    main.redefine(key, value);
+  }
+}
+
+function addShinyMessageHandler(el, main) {
+  const messageHandlerName = `observable-${el.id}`;
+  console.log(messageHandlerName);
+  Shiny.addCustomMessageHandler(messageHandlerName, (payload) => {
+    console.log(payload);
+    redefineCells(main, payload);
+  });
+}
+
 class ObservableOutputBinding extends Shiny.OutputBinding {
   find(scope) {
     return scope.find(".shiny-observable-output");
@@ -46,12 +62,7 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
           console.log(key, value);
           main.redefine(key, value);
         }
-        /*
-        main.redefine("data", [
-          { letter: "A", frequency: 0.6 },
-          { letter: "B", frequency: 0.4 },
-        ]);
-        */
+        addShinyMessageHandler(el, main);
       }
     });
   }
