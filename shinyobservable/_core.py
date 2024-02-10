@@ -10,7 +10,7 @@ API_VERSION = 4
 class Observable(object):
     """Observable"""
 
-    def __init__(self, notebook, width: int | str = None):
+    def __init__(self, notebook: str, width: int | str = None, cells: list = None):
         if isinstance(width, int):
             width = f"{width}px"
 
@@ -21,6 +21,7 @@ class Observable(object):
             )
 
         self.notebook = notebook
+        self.cells = cells
 
     def to_dict(self):
-        return dict(notebook=self.notebook, width=self.width)
+        return dict(notebook=self.notebook, width=self.width, cells=self.cells)
