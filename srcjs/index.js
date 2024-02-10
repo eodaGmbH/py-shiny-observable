@@ -30,9 +30,11 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
 
         // Embed single cell
       } else {
+        let i = -1;
         main = runtime.module(define, (name) => {
-          console.log("cell", name);
-          if (payload.cells.includes(name)) {
+          i++;
+          console.log("cell", name, i);
+          if (payload.cells.includes(name) || payload.cells.includes(i)) {
             console.log("embed me");
             // return new Inspector(el);
             return new Inspector(createCellNode(el, name));
