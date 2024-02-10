@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "shinyobservable"
 version = "0.1.0"
-description = ""
+description = "Observable Notebooks and Cells in Shiny"
 authors = ["Stefan Kuethe <stefan.kuethe@eoda.de>"]
 readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9"
 shiny = "^0.7.1"
 
 

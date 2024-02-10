@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stefan Kuethe",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "esbuild": "^0.20.0",
     "prettier": "^3.2.5"
