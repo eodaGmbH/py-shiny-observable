@@ -39,8 +39,19 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
             // return new Inspector(el);
             return new Inspector(createCellNode(el, name));
           }
+          return true;
         });
         console.log("main", main);
+        for (const [key, value] of Object.entries(payload.data)) {
+          console.log(key, value);
+          main.redefine(key, value);
+        }
+        /*
+        main.redefine("data", [
+          { letter: "A", frequency: 0.6 },
+          { letter: "B", frequency: 0.4 },
+        ]);
+        */
       }
     });
   }
