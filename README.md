@@ -1,6 +1,6 @@
 # shinyobservable
 
-Embed any [Observable Notebook](https://observablehq.com/) in [Shiny for Python](https://shiny.posit.co/py/).
+Embed [Observable Notebooks](https://observablehq.com/) in [Shiny for Python](https://shiny.posit.co/py/).
 
 Create any kind of visualizations with JavaScript and let Shiny handle the interactivity. 
 
