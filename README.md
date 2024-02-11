@@ -15,10 +15,16 @@ ui.h1("Observable Notebook in Shiny")
 ui.div(a(NOTEBOOK, href=NOTEBOOK))
 ui.hr()
 
-
+# Render complete notebook
 @ObservableRenderer
 def render_notebook():
     return Observable(NOTEBOOK)
+
+
+# Render single cells only
+@ObservableRenderer
+def render_cells():
+    return Observable(NOTEBOOK, cells=["chart"])
 ```
 
 Enjoy your Observable Notebook in Shiny!

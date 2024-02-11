@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "shinyobservable"
-version = "0.1.0"
+version = "0.2.0"
 description = "Observable Notebooks and Cells in Shiny"
 authors = ["Stefan Kuethe <stefan.kuethe@eoda.de>"]
 readme = "README.md"

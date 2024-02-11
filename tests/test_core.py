@@ -1,4 +1,5 @@
 from shinyobservable import Observable
+from shinyobservable._core import API_VERSION
 
 
 def test_observable():
@@ -9,5 +10,9 @@ def test_observable():
     obs = Observable(notebook, width=700)
 
     # Assert
-    expected_notebook = "https://api.observablehq.com/@d3/zoomable-sunburst.js?v=3"
-    assert obs.to_dict() == dict(notebook=expected_notebook, width="700px")
+    expected_notebook = (
+        f"https://api.observablehq.com/@d3/zoomable-sunburst.js?v={API_VERSION}"
+    )
+    assert obs.to_dict() == dict(
+        notebook=expected_notebook, cells=None, data=dict(), width="700px"
+    )

@@ -1,4 +1,22 @@
 import { Runtime, Inspector } from "@observablehq/runtime";
+import { createCellNode } from "./utils";
+// import { ObservableWidget } from "./widget";
+
+function redefineCells(main, payload) {
+  for (const [key, value] of Object.entries(payload.data)) {
+    console.log("redefine", key);
+    main.redefine(key, value);
+  }
+}
+
+function addShinyMessageHandler(el, main) {
+  const messageHandlerName = `observable-${el.id}`;
+  console.log(messageHandlerName);
+  Shiny.addCustomMessageHandler(messageHandlerName, (payload) => {
+    console.log(payload);
+    redefineCells(main, payload);
+  });
+}
 
 class ObservableOutputBinding extends Shiny.OutputBinding {
   find(scope) {
@@ -7,14 +25,36 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
 
   renderValue(el, payload) {
     console.log(payload);
-    el.style.width = payload.width;
 
+    // TODO: Use widget
+    // const widget = new ObservableWidget(el, payload);
+    // console.log(widget);
+
+    el.style.width = payload.width;
     const nb = payload.notebook;
+
+    // Import nb
     import(nb).then((module) => {
-      // console.log(module);
       const define = module.default;
       const runtime = new Runtime();
-      const main = runtime.module(define, Inspector.into(el));
+      let i = -1;
+      const main = runtime.module(define, (name) => {
+        i++;
+        console.log("cell", name, i);
+        if (
+          payload.cells == null || // include entire notebook
+          payload.cells.includes(name) ||
+          payload.cells.includes(i)
+        ) {
+          console.log("embed cell");
+          return new Inspector(createCellNode(el));
+        }
+
+        return true;
+      });
+
+      redefineCells(main, payload);
+      addShinyMessageHandler(el, main);
     });
   }
 }
