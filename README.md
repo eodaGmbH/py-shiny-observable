@@ -37,8 +37,8 @@ def render_cells():
     return Observable(NOTEBOOK, cells=["chart"])
 ```
 
-See [docs/examples/getting_started/playground.py](docs/examples/getting_started/playground.py) for a detailed example.
-
 Enjoy your Observable Notebook in Shiny!
 
 ![](docs/images/complete-notebook.png)
+
+See [docs/examples/getting_started/playground.py](docs/examples/getting_started/playground.py) for a detailed example.
