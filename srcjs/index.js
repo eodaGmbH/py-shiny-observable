@@ -38,32 +38,27 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
     import(nb).then((module) => {
       const define = module.default;
       const runtime = new Runtime();
-      let main;
-
-      // Embed complete notebook
-      if (payload.cells == null) {
-        main = runtime.module(define, Inspector.into(el));
-
-        // Embed single cell
-      } else {
-        let i = -1;
-        main = runtime.module(define, (name) => {
-          i++;
-          console.log("cell", name, i);
-          if (payload.cells.includes(name) || payload.cells.includes(i)) {
-            console.log("embed me");
-            // return new Inspector(el);
-            return new Inspector(createCellNode(el, name));
-          }
-          return true;
-        });
-        console.log("main", main);
-        for (const [key, value] of Object.entries(payload.data)) {
-          console.log(key, value);
-          main.redefine(key, value);
+      let i = -1;
+      const main = runtime.module(define, (name) => {
+        i++;
+        console.log("cell", name, i);
+        if (
+          payload.cells == null || // include entire notebook
+          payload.cells.includes(name) ||
+          payload.cells.includes(i)
+        ) {
+          console.log("embed cell");
+          return new Inspector(createCellNode(el, name));
         }
-        addShinyMessageHandler(el, main);
+
+        return true;
+      });
+      // console.log("main", main);
+      for (const [key, value] of Object.entries(payload.data)) {
+        console.log(key, value);
+        main.redefine(key, value);
       }
+      addShinyMessageHandler(el, main);
     });
   }
 }

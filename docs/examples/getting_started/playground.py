@@ -25,9 +25,13 @@ def create_data():
     ]
 
 
+cells = ["viewof order", "chart", "data"]
+# cells = None
+
+
 @ObservableRenderer
 def render_notebook():
-    return Observable(NOTEBOOK, cells=["viewof order", "chart", "data"]).redefine(
+    return Observable(NOTEBOOK, cells=cells).redefine(
         # data=create_data(),
         data=[
             dict(letter="A", frequency=0.1),
