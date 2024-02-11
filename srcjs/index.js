@@ -1,5 +1,6 @@
 import { Runtime, Inspector } from "@observablehq/runtime";
 import { createCellNode } from "./utils";
+// import { ObservableWidget } from "./widget";
 
 function redefineCells(main, payload) {
   for (const [key, value] of Object.entries(payload.data)) {
@@ -24,6 +25,11 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
 
   renderValue(el, payload) {
     console.log(payload);
+
+    // TODO: Use widget
+    // const widget = new ObservableWidget(el, payload);
+    // console.log(widget);
+
     el.style.width = payload.width;
     const nb = payload.notebook;
 
