@@ -2,7 +2,9 @@
 
 Embed [Observable Notebooks](https://observablehq.com/) in [Shiny for Python](https://shiny.posit.co/py/).
 
-Create any kind of visualizations with JavaScript and let Shiny handle the interactivity. 
+Shinyobservable makes it a breeze to integrate libraries such as [D3](https://d3js.org/).
+
+Create any kind of JavaScript visualizations and let Shiny handle the interactivity. 
 
 ## Features
 
@@ -35,8 +37,8 @@ def render_cells():
     return Observable(NOTEBOOK, cells=["chart"])
 ```
 
-Enjoy your Observable Notebook in Shiny!
-
 See [docs/examples/getting_started/playground.py](docs/examples/getting_started/playground.py) for a detailed example.
+
+Enjoy your Observable Notebook in Shiny!
 
 ![](docs/images/complete-notebook.png)
