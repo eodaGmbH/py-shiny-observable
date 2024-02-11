@@ -25,8 +25,8 @@ def create_data():
     ]
 
 
-cells = ["viewof order", "chart", "data"]
-# cells = None
+# cells = ["viewof order", "chart", "data"]
+cells = None
 
 
 @ObservableRenderer

@@ -1,16 +1,14 @@
 import { Runtime, Inspector } from "@observablehq/runtime";
 
-function createCellNode(el, name) {
+function createCellNode(el) {
   const node = document.createElement("div");
-  node.id = `observable-${el.id}-${name}`;
-  console.log(node.id);
   el.appendChild(node);
   return node;
 }
 
 function redefineCells(main, payload) {
   for (const [key, value] of Object.entries(payload.data)) {
-    console.log(key, value);
+    console.log("redefine", key);
     main.redefine(key, value);
   }
 }
@@ -48,16 +46,13 @@ class ObservableOutputBinding extends Shiny.OutputBinding {
           payload.cells.includes(i)
         ) {
           console.log("embed cell");
-          return new Inspector(createCellNode(el, name));
+          return new Inspector(createCellNode(el));
         }
 
         return true;
       });
-      // console.log("main", main);
-      for (const [key, value] of Object.entries(payload.data)) {
-        console.log(key, value);
-        main.redefine(key, value);
-      }
+
+      redefineCells(main, payload);
       addShinyMessageHandler(el, main);
     });
   }
