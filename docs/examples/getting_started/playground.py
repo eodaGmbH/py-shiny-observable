@@ -12,7 +12,7 @@ from shinyobservable import Observable, ObservableContext, ObservableRenderer
 NOTEBOOK = "https://observablehq.com/@d3/bar-chart-transitions/2"
 
 ui.h1("Observable Notebook in Shiny")
-ui.div(a(NOTEBOOK, href=NOTEBOOK))
+ui.div(a(NOTEBOOK, href=NOTEBOOK, target="_blank"))
 ui.hr()
 
 
@@ -25,8 +25,8 @@ def create_data():
     ]
 
 
-# cells = ["viewof order", "chart", "data"]
-cells = None
+cells = ["viewof order", "chart", "data"]
+# cells = None
 
 
 @ObservableRenderer
