@@ -1,5 +1,10 @@
 # shinyobservable
 
+[![Release](https://img.shields.io/github/v/release/eodaGmbH/py-shiny-observable)](https://img.shields.io/github/v/release/eodaGmbH/py-shiny-observable)
+[![pypi](https://img.shields.io/pypi/v/shinyobservable.svg)](https://pypi.python.org/pypi/shinyobservable)
+[![Build status](https://img.shields.io/github/actions/workflow/status/eodaGmbH/py-shiny-observable/pytest.yml?branch=main)](https://img.shields.io/github/actions/workflow/status/eodaGmbH/py-tabulator/pytest.yml?branch=main)
+[![License](https://img.shields.io/github/license/eodaGmbH/py-shiny-observable)](https://img.shields.io/github/license/eodaGmbH/py-shiny-observable)
+
 Embed [Observable Notebooks](https://observablehq.com/) in [Shiny for Python](https://shiny.posit.co/py/).
 
 Shinyobservable makes it a breeze to integrate libraries such as [D3](https://d3js.org/).
