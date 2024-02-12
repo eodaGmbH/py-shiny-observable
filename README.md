@@ -9,7 +9,7 @@ Embed [Observable Notebooks](https://observablehq.com/) in [Shiny for Python](ht
 
 Shinyobservable makes it a breeze to integrate libraries such as [D3](https://d3js.org/).
 
-Create any kind of JavaScript visualizations and let Shiny handle your data and interactivity. 
+Create any kind of JavaScript visualizations with [Observable](https://observablehq.com/) and let Shiny handle your data and interactivity. 
 
 ## Features
 
