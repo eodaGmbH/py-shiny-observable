@@ -25,7 +25,7 @@ class Observable(object):
             width = f"{width}px"
 
         self.width = width
-        if "//api" not in notebook:
+        if BASE_URL in notebook and "//api" not in notebook:
             notebook = (
                 f"{BASE_API_URL}/{relpath(notebook, BASE_URL)}.js?v={API_VERSION}"
             )
