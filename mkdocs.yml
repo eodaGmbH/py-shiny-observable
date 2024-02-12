@@ -17,6 +17,7 @@ nav:
       - Welcome to Shinyobservable: index.md
       - Redefine data cells: getting_started/redefine_data.md
       - Interactivity: getting_started/interactivity.md
+      - Changelog: changelog.md
   - API Documentation: api.md
 
 markdown_extensions:
