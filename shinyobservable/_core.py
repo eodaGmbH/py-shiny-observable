@@ -46,7 +46,7 @@ class Observable(object):
             ... )
             >>>
         """
-        self.data = kwargs
+        self.data.update(kwargs)
         return self
 
     def to_dict(self):
