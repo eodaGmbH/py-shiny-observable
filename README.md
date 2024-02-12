@@ -50,4 +50,8 @@ Enjoy your Observable Notebook in Shiny!
 
 ![](docs/images/chart-cell.png)
 
-See [docs/examples/getting_started/playground.py](docs/examples/getting_started/playground.py) for a detailed example.
+See [this example](docs/examples/getting_started/redefine_data.py) on how to update the data of your notebook.
+
+## Docs
+
+https://eodagmbh.github.io/py-shiny-observable/
