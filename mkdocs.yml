@@ -1,0 +1,47 @@
+site_name: Shinyobservable
+
+repo_name: py-shiny-observable
+repo_url: https://github.com/eodaGmbH/py-shiny-observable
+
+
+theme:
+  name: material
+  palette:
+    primary: "green"
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+
+nav:
+  - Getting Started:
+      - Welcome to Shinyobservable: index.md
+      - Redefine data cells: getting_started/redefine_data.md
+      - Interactivity: getting_started/interactivity.md
+  - API Documentation: api.md
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite:
+  - pymdownx.superfences:
+  - pymdownx.snippets:
+      check_paths: true
+      base_path: [docs/examples, "."]
+
+plugins:
+  - search:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            docstring_section_style: table
+            show_root_heading: true
+            show_source: true
+
+watch:
+  - shinyobservable

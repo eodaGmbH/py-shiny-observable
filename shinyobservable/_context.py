@@ -2,7 +2,12 @@ from shiny.session import Session, require_active_session
 
 
 class ObservableContext(object):
-    """Create an Observable context instance"""
+    """Create an Observable context instance
+
+    Arguments:
+        id: The output id of the notebook instance to be updated.
+        session: A Shiny session. If `None`, the active session is used.
+    """
 
     data = dict()
 
@@ -18,6 +23,7 @@ class ObservableContext(object):
         await self.render()
 
     def redefine(self, **kwargs) -> None:
+        """Redefine cells of the embedded notebook"""
         self.data = kwargs
 
     async def render(self):
