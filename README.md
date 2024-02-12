@@ -4,13 +4,22 @@ Embed [Observable Notebooks](https://observablehq.com/) in [Shiny for Python](ht
 
 Shinyobservable makes it a breeze to integrate libraries such as [D3](https://d3js.org/).
 
-Create any kind of JavaScript visualizations and let Shiny handle the interactivity. 
+Create any kind of JavaScript visualizations and let Shiny handle your data and interactivity. 
 
 ## Features
 
 * Embed entire notebooks
 * Embed selected cells only
 * Update data cells to update visualizations
+
+## Installation
+
+```bash
+pip install shinyobservable
+
+# Dev
+pip install git+https://github.com/eodaGmbH/py-shiny-shinyobservable
+```
 
 ## Quickstart
 
@@ -39,6 +48,6 @@ def render_cells():
 
 Enjoy your Observable Notebook in Shiny!
 
-![](docs/images/complete-notebook.png)
+![](docs/images/chart-cell.png)
 
 See [docs/examples/getting_started/playground.py](docs/examples/getting_started/playground.py) for a detailed example.

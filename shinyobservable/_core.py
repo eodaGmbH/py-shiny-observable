@@ -34,6 +34,18 @@ class Observable(object):
         self.cells = cells
 
     def redefine(self, **kwargs) -> Observable:
+        """Redefine cells of the embedded notebook
+
+        Examples:
+            >>> # Redefine the data cell of a notebook
+            >>> nb = Observable("some-notebook").redefine(
+            ...     data=[
+            ...         dict(x=1, y=2),
+            ...         dict(x=2, y=4)
+            ...     ]
+            ... )
+            >>>
+        """
         self.data = kwargs
         return self
 

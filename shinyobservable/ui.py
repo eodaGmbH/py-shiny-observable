@@ -12,6 +12,11 @@ observable_bindings_dep = HTMLDependency(
 
 
 def output_observable(id: str) -> Tag:
+    """Create an output control for an `Observable` object
+
+    Arguments:
+        id: An output id.
+    """
     return ui.div(
         observable_bindings_dep,
         # Use resolve_id so that our component will work in a module
